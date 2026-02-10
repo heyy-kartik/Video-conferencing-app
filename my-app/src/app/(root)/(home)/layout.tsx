@@ -1,6 +1,6 @@
 import React from "react";
 
-const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+const HomeLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <main className="relative">
       navbar
@@ -14,4 +14,4 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   );
 };
 
-export default RootLayout;
+export default HomeLayout;

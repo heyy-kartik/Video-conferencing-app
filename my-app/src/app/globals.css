@@ -80,6 +80,131 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ======== Stream CSS overrides ======== */
+.str-video__call-stats {
+  max-width: 500px;
+  position: relative;
+}
+
+.str-video__speaker-layout__wrapper {
+  max-height: 700px;
+}
+
+.str-video__participant-details,
+.str-video__menu-container,
+.str-video__notification {
+  color: white;
+}
+
+.str-video__participant-list {
+  background-color: #1c1f2e;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  height: 100%;
+}
+
+.str-video__call-controls__button {
+  height: 40px;
+}
+
+/* ================= Glassmorphism ================= */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.glassmorphism2 {
+  background: rgba(18, 17, 17, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ======== Clerk overrides ======== */
+.cl-userButtonPopoverActionButtonIcon,
+.cl-internal-wkkub3,
+.cl-userButtonPopoverActionButton {
+  color: white;
+}
+
+.cl-logoBox {
+  height: 40px;
+}
+
+.cl-dividerLine {
+  background: #252a41;
+  height: 2px;
+}
+
+.cl-socialButtonsIconButton {
+  border: 3px solid #565761;
+}
+
+/* ================= Utilities ================= */
+@layer utilities {
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* ================= Animation ================= */
+.show-block {
+  width: 100%;
+  max-width: 350px;
+  display: block;
+  animation: show 0.7s linear forwards;
+}
+
+@keyframes show {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@theme {
+  /* Dark */
+  --dark-1: #1C1F2E;
+  --dark-2: #161925;
+  --dark-3: #252A41;
+  --dark-4: #1E2757;
+
+  /* Blue */
+  --blue-1: #0E78F9;
+
+  /* Sky */
+  --sky-1: #C9DDFF;
+  --sky-2: #ECF0FF;
+  --sky-3: #F5FCFF;
+
+  /* Orange */
+  --orange-1: #FF742E;
+
+  /* Purple */
+  --purple-1: #830EF9;
+
+  /* Yellow */
+  --yellow-1: #F9A90E;
+
+  /* Backgrounds */
+  --bg-hero: url('/images/hero-background.png');
+}
 
 .dark {
   --background: oklch(0.145 0 0);

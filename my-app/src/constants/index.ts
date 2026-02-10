@@ -1,4 +1,4 @@
-const sidebarlinks = [
+export const sidebarlinks = [
   {
     label : "Home",
     imgurl : " ", 
