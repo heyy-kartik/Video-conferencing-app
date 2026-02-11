@@ -10,7 +10,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <section className="sticky flex  h-screen w-fit flex-col justify-between bg-(--dark-1) p-6 pt-28 pb-8 text-white max-sm:hidden lg:w-66">
+    <section className="sticky flex  h-screen w-fit flex-col justify-between bg-[#00001A] p-6 pt-28 pb-8 text-white max-sm:hidden lg:w-66">
       <div className="flex flex-1 flex-col gap-6 px-2">
         {sidebarlinks.map((item) => {
           const isActive =
@@ -33,7 +33,7 @@ const Sidebar = () => {
                 width={24}
                 height={24}
               />
-              <p className="text-lg font-semibold max-lg:hidden">
+              <p className="text-sm font-semibold max-lg:hidden">
                 {item.label}
               </p>
             </Link>

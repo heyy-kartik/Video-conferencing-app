@@ -1,7 +1,18 @@
+import Link from "next/link";
 import React from "react";
-
+import Image from "next/image";
+import Mobilenav from "./Mobilenav";
 const Navbar = () => {
-  return <div className="text-2xl  pl-5 pt-4 text-blue-400"></div>;
+  return (
+    <nav className="flex-between  fixed z-50 w-full px-6 py-4 lg:px-10">
+      <Link href="/" className="flex items-center gap-1">
+        <p className="text-[26px] font-extrabold text-white max-sm:hidden">
+          Zoom{" "}
+        </p>
+      </Link>
+      <Mobilenav></Mobilenav>
+    </nav>
+  );
 };
 
 export default Navbar;
