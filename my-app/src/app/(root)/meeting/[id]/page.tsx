@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
+import { useParams } from "next/navigation";
 
 const page = () => {
-  return <div></div>;
+  return <div> Meeting page </div>;
 };
 
 export default page;
