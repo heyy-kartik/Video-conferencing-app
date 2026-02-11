@@ -1,27 +1,27 @@
 export const sidebarlinks = [
   {
     label : "Home",
-    imgurl : " ", 
+    imgurl : "/icons/home.svg", 
     route : "/" , 
     },
      {
     label : "Upcoming Meetings",
-    imgurl : " ", 
-    route : "upcoming" , 
+    imgurl : "/icons/upcoming.svg", 
+    route : "/upcoming" , 
     },
      {
     label : "Previous",
-    imgurl : " ", 
-    route : "previous" , 
+    imgurl : "/icons/previous.svg", 
+    route : "/previous" , 
     },
      {
     label : "Recordings",
-    imgurl : " ", 
-    route : "recordings" , 
+    imgurl : "/icons/recordings.svg", 
+    route : "/recordings" , 
     },
      {
     label : "Personal Room",
-    imgurl : " ", 
-    route : "personal-room" , 
+    imgurl : "/icons/personal.svg", 
+    route : "/personal-room" , 
     }
 ] 
