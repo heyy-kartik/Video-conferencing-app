@@ -244,3 +244,22 @@
     @apply bg-background text-foreground;
   }
 }
+:root {
+  --clerk-color-background: #212126;
+  --clerk-color-neutral: white;
+  --clerk-color-primary: #FFFFFF;
+  --clerk-color-primary-foreground: black;
+  --clerk-color-foreground: white;
+  --clerk-color-input-foreground: white;
+  --clerk-color-input: #26262B;
+}
+
+.dark {
+  --clerk-color-background: #303030;
+  --clerk-color-neutral: #FFFFFF;
+  --clerk-color-primary: #FFFFFF;
+  --clerk-color-primary-foreground: black;
+  --clerk-color-foreground: white;
+  --clerk-color-input-foreground: white;
+  --clerk-color-input: #26262B;
+}

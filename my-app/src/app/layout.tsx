@@ -38,6 +38,14 @@ export default function RootLayout({
             socialButtonsVariant: "iconButton",
             logoImageUrl: "/icons/yoom-logo.svg",
           },
+          elements: {
+            card: "rounded-xl shadow-[0_10px_25px_rgba(0,0,0,0.1)]",
+            // Or if you need more control:
+            // card: {
+            //   borderRadius: "12px",
+            //   boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+            // }
+          },
           variables: {
             colorText: "#fff",
             colorPrimary: "#0E78F9",
