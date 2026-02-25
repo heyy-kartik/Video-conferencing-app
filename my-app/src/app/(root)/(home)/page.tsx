@@ -1,5 +1,5 @@
 import React from "react";
-
+import Meetingstyle from "@/components/Meetingstyle";
 const page = () => {
   const now = new Date();
   const time = now.toLocaleTimeString("en-US", {
@@ -28,6 +28,7 @@ const page = () => {
           </div>
         </div>
       </div>
+      <Meetingstyle />
     </section>
   );
 };
