@@ -12,6 +12,7 @@ const Meetingstyle = () => {
   const [meetingState, setMeetingState] = useState<
     "isScheduleMeeting" | "isJoiningMeeting" | "isInstantMeeting" | undefined
   >(undefined);
+  const createMeeting = () => {};
 
   return (
     <>
@@ -47,7 +48,34 @@ const Meetingstyle = () => {
           />
         </section>
       </div>
-      <MeetingModal />
+      <MeetingModal
+        isOpen={meetingState == "isInstantMeeting"}
+        onClose={() => setMeetingState(undefined)}
+        title="Start an Instant Meeting"
+        buttonText=" Start Meeting"
+        className="text-center "
+      />
+      <MeetingModal
+        isOpen={meetingState == "isJoiningMeeting"}
+        onClose={() => setMeetingState(undefined)}
+        title="Type the meeting code to join"
+        buttonText=" Join Meeting"
+        className="text-center "
+      />
+      <MeetingModal
+        isOpen={meetingState == "isScheduleMeeting"}
+        onClose={() => setMeetingState(undefined)}
+        title="Schedule a Meeting for later"
+        buttonText=" Schedule Meeting"
+        className="text-center "
+      />
+      <MeetingModal
+        isOpen={meetingState == "isInstantMeeting"}
+        onClose={() => setMeetingState(undefined)}
+        title="Get access to your meeting recordings"
+        buttonText=" View Recordings"
+        className="text-center "
+      />
     </>
   );
 };
