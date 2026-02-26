@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import { toast } from "sonner";
 import Homecard from "./Homecard";
 import { cn } from "@/lib/utils";
 import { useUser } from "@clerk/nextjs";
@@ -13,7 +13,7 @@ const Meetingstyle = () => {
     "isScheduleMeeting" | "isJoiningMeeting" | "isInstantMeeting" | undefined
   >(undefined);
   const createMeeting = () => {};
-
+  const { toast } = useToast();
   return (
     <>
       <div>
@@ -81,3 +81,6 @@ const Meetingstyle = () => {
 };
 
 export default Meetingstyle;
+function useToast(): { toast: any } {
+  throw new Error("Function not implemented.");
+}
