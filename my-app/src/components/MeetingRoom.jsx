@@ -3,7 +3,7 @@ import React from "react";
 const MeetingRoom = () => {
   return (
     <>
-      <div></div>
+      <div className="relative h-screen w-full "></div>
     </>
   );
 };
