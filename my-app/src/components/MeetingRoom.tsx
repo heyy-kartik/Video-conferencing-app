@@ -12,7 +12,6 @@ import {
 } from "@stream-io/video-react-sdk";
 import { cn } from "@/lib/utils";
 import { LayoutList, Loader } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,6 +21,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Endbutton from "./Endbutton";
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 const MeetingRoom = () => {
   const router = useRouter();
@@ -56,9 +56,9 @@ const MeetingRoom = () => {
             <CallParticipantsList onClose={() => setshowParticipants(false)} />
           </div>
         </div>
-        <div className="fixed bottom-0 flex flex-row flex-w-full items-center justify-center gap-5 p-4 ">
+        <div className="fixed bottom-0 flex flex-row flex-w-full items-center justify-center gap-5 flex-wrap bg-[#19232d]/[.8] py-3">
           <CallControls onLeave={() => router.push(`/`)} />
-
+          <Endbutton />
           <DropdownMenu>
             <div className="flex items-center">
               <DropdownMenuTrigger className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
