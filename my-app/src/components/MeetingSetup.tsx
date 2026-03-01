@@ -31,7 +31,7 @@ const MeetingSetup = ({
   return (
     <>
       <div className="flex h-screen w-full items-center justify-center gap-3 text-white ">
-        <h1 className="text-3xl font-bold text-white">Meeting Setup</h1>
+        <h1 className="text-3xl font-bold text-white">Meeting is so on...</h1>
         <VideoPreview />
         <div className="flex h-16 items-center justify-center gap-3">
           <label className="flex cursor-pointer items-center gap-2 rounded bg-gray-800 px-4 py-2">

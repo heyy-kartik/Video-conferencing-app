@@ -9,6 +9,7 @@ import MeetingModal from "./MeetingModal";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import Loader from "./Loader";
 import { DatePickerTime } from "./date-picker-time";
+import { Input } from "./ui/input";
 
 const Meetingstyle = () => {
   const router = useRouter();
@@ -70,7 +71,7 @@ const Meetingstyle = () => {
       setcalldetails(call);
 
       // Close modal and navigate to the meeting page
-      if (meetingState === 'isInstantMeeting') {
+      if (meetingState === "isInstantMeeting") {
         router.push(`/meeting/${call.id}`);
       } else {
         toast.success("Meeting scheduled successfully!");
@@ -81,7 +82,7 @@ const Meetingstyle = () => {
       console.error("Error creating meeting:", error);
     }
   };
-  
+
   const joinMeeting = () => {
     if (!meetingLink) {
       toast.error("Please enter a meeting link");
@@ -171,7 +172,7 @@ const Meetingstyle = () => {
           buttonText="Copy Meeting Link"
         />
       )}
-      
+
       <MeetingModal
         isOpen={meetingState === "isJoiningMeeting"}
         onClose={() => setMeetingState(undefined)}
@@ -184,16 +185,16 @@ const Meetingstyle = () => {
           <label className="text-base font-normal leading-[22.4px] text-sky-2">
             Paste meeting link
           </label>
-          <input
+          <Input
             type="text"
             placeholder="https://zoom-clone.com/meeting/..."
             value={meetingLink}
             onChange={(e) => setMeetingLink(e.target.value)}
-            className="border-none bg-dark-3 rounded-md p-3 text-white focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="border-none bg-dark-3 rounded-md p-3 text-black   font-sans focus-visible:ring-0 focus-visible:ring-offset-0"
           />
         </div>
       </MeetingModal>
-      
+
       <MeetingModal
         isOpen={meetingState === "isInstantMeeting"}
         onClose={() => setMeetingState(undefined)}
