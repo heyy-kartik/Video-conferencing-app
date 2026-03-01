@@ -4,7 +4,7 @@ interface MeetingModalProps {
   // Define any props you want to pass to the MeetingModal component
   title?: string;
   className?: string;
-  chidren?: React.ReactNode;
+  children?: React.ReactNode;
   handleClick?: () => void;
   buttonText?: string;
   image?: string;
@@ -27,8 +27,7 @@ const MeetingModal = ({
   onClose,
   title,
   className,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  chidren,
+  children,
   handleClick,
   buttonText,
   image,
@@ -49,7 +48,7 @@ const MeetingModal = ({
             </div>
           )}
           <h1 className=" ">{title}</h1>
-          {chidren}
+          {children}
           <Button
             className={
               "bg-blue-500 focus-visible:ring-0 focus-visible:ring-offset-0"

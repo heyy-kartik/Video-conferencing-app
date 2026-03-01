@@ -13,9 +13,47 @@ import {
 import { format } from "date-fns";
 import { ChevronDownIcon } from "lucide-react";
 
-export function DatePickerTime() {
+interface DatePickerTimeProps {
+  date?: Date;
+  time?: string;
+  onDateChange?: (date: Date | undefined) => void;
+  onTimeChange?: (time: string) => void;
+}
+
+export function DatePickerTime({
+  date: externalDate,
+  time: externalTime,
+  onDateChange,
+  onTimeChange,
+}: DatePickerTimeProps) {
   const [open, setOpen] = React.useState(false);
-  const [date, setDate] = React.useState<Date | undefined>(undefined);
+  const [date, setDate] = React.useState<Date | undefined>(externalDate);
+  const [time, setTime] = React.useState<string>(externalTime || "10:30:00");
+
+  // Update internal state when external props change
+  React.useEffect(() => {
+    if (externalDate !== undefined) {
+      setDate(externalDate);
+    }
+  }, [externalDate]);
+
+  React.useEffect(() => {
+    if (externalTime !== undefined) {
+      setTime(externalTime);
+    }
+  }, [externalTime]);
+
+  const handleDateSelect = (selectedDate: Date | undefined) => {
+    setDate(selectedDate);
+    setOpen(false);
+    onDateChange?.(selectedDate);
+  };
+
+  const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newTime = e.target.value;
+    setTime(newTime);
+    onTimeChange?.(newTime);
+  };
 
   return (
     <FieldGroup className="mx-auto max-w-xs flex-row">
@@ -38,10 +76,7 @@ export function DatePickerTime() {
               selected={date}
               captionLayout="dropdown"
               defaultMonth={date}
-              onSelect={(date) => {
-                setDate(date);
-                setOpen(false);
-              }}
+              onSelect={handleDateSelect}
             />
           </PopoverContent>
         </Popover>
@@ -52,7 +87,8 @@ export function DatePickerTime() {
           type="time"
           id="time-picker-optional"
           step="1"
-          defaultValue="10:30:00"
+          value={time}
+          onChange={handleTimeChange}
           className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
         />
       </Field>

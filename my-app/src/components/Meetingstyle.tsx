@@ -3,14 +3,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Homecard from "./Homecard";
-import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-
-import { cn } from "@/lib/utils";
 import { useUser } from "@clerk/nextjs";
 import MeetingModal from "./MeetingModal";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import Loader from "./Loader";
+import { DatePickerTime } from "./date-picker-time";
 
 const Meetingstyle = () => {
   const router = useRouter();
@@ -22,6 +20,11 @@ const Meetingstyle = () => {
     description: "",
     link: "",
   });
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+    new Date(),
+  );
+  const [selectedTime, setSelectedTime] = useState<string>("10:30:00");
+  const [meetingLink, setMeetingLink] = useState("");
   const [meetingState, setMeetingState] = useState<
     "isScheduleMeeting" | "isJoiningMeeting" | "isInstantMeeting" | undefined
   >(undefined);
@@ -42,8 +45,17 @@ const Meetingstyle = () => {
 
       if (!call) throw new Error("Failed to create a call");
 
-      const startsAt =
-        values.dateTime.toISOString() || new Date().toISOString();
+      // Combine selected date and time
+      let startsAt: string;
+      if (selectedDate && selectedTime) {
+        const [hours, minutes, seconds] = selectedTime.split(":").map(Number);
+        const combinedDateTime = new Date(selectedDate);
+        combinedDateTime.setHours(hours, minutes, seconds || 0);
+        startsAt = combinedDateTime.toISOString();
+      } else {
+        startsAt = values.dateTime.toISOString();
+      }
+
       const description = values.description || "Instant Meeting";
 
       await call.getOrCreate({
@@ -58,16 +70,28 @@ const Meetingstyle = () => {
       setcalldetails(call);
 
       // Close modal and navigate to the meeting page
+      if (meetingState === 'isInstantMeeting') {
+        router.push(`/meeting/${call.id}`);
+      } else {
+        toast.success("Meeting scheduled successfully!");
+      }
       setMeetingState(undefined);
-      router.push(`/meeting/${call.id}`);
     } catch (error) {
       toast("An error occurred while creating the meeting. Please try again.");
       console.error("Error creating meeting:", error);
     }
   };
+  
+  const joinMeeting = () => {
+    if (!meetingLink) {
+      toast.error("Please enter a meeting link");
+      return;
+    }
+    router.push(meetingLink);
+  };
   if (!user) return <Loader />;
 
-  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${calldetails?.id}`;
+  const createdMeetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${calldetails?.id}`;
   return (
     <>
       <div>
@@ -87,7 +111,7 @@ const Meetingstyle = () => {
             handleClick={() => setMeetingState("isJoiningMeeting")}
           />
           <Homecard
-            className="bg-blue-300"
+            className="bg-gray-600"
             title="Schedule Meeting "
             description="Schedule meetings"
             img="/icons/schedule.svg"
@@ -102,27 +126,81 @@ const Meetingstyle = () => {
           />
         </section>
       </div>
+      {!calldetails ? (
+        <MeetingModal
+          isOpen={meetingState === "isScheduleMeeting"}
+          onClose={() => setMeetingState(undefined)}
+          title="Create Meeting"
+          handleClick={createMeeting}
+        >
+          <div className="flex flex-col gap-2.5">
+            <label className="text-base font-normal leading-[22.4px] text-sky-2">
+              Add a description
+            </label>
+            <Textarea
+              className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+              onChange={(e) =>
+                setvalues({ ...values, description: e.target.value })
+              }
+            />
+          </div>
+          <div className="flex w-full flex-col gap-2.5">
+            <label className="text-base font-normal leading-[22.4px] text-sky-2">
+              Select Date and Time
+            </label>
+            <DatePickerTime
+              date={selectedDate}
+              time={selectedTime}
+              onDateChange={setSelectedDate}
+              onTimeChange={setSelectedTime}
+            />
+          </div>
+        </MeetingModal>
+      ) : (
+        <MeetingModal
+          isOpen={meetingState === "isScheduleMeeting"}
+          onClose={() => setMeetingState(undefined)}
+          title="Meeting Created"
+          handleClick={() => {
+            navigator.clipboard.writeText(createdMeetingLink);
+            toast.success("Link Copied");
+          }}
+          image={"/icons/checked.svg"}
+          buttonIcon="/icons/copy.svg"
+          className="text-center"
+          buttonText="Copy Meeting Link"
+        />
+      )}
+      
       <MeetingModal
-        isOpen={meetingState == "isInstantMeeting"}
+        isOpen={meetingState === "isJoiningMeeting"}
+        onClose={() => setMeetingState(undefined)}
+        title="Enter the meeting link to join"
+        buttonText="Join Meeting"
+        handleClick={joinMeeting}
+        className="text-center"
+      >
+        <div className="flex flex-col gap-2.5">
+          <label className="text-base font-normal leading-[22.4px] text-sky-2">
+            Paste meeting link
+          </label>
+          <input
+            type="text"
+            placeholder="https://zoom-clone.com/meeting/..."
+            value={meetingLink}
+            onChange={(e) => setMeetingLink(e.target.value)}
+            className="border-none bg-dark-3 rounded-md p-3 text-white focus-visible:ring-0 focus-visible:ring-offset-0"
+          />
+        </div>
+      </MeetingModal>
+      
+      <MeetingModal
+        isOpen={meetingState === "isInstantMeeting"}
         onClose={() => setMeetingState(undefined)}
         title="Start an Instant Meeting"
         buttonText="Start Meeting"
-        className="text-center"
         handleClick={createMeeting}
-      />
-      <MeetingModal
-        isOpen={meetingState == "isJoiningMeeting"}
-        onClose={() => setMeetingState(undefined)}
-        title="Type the meeting code to join"
-        buttonText=" Join Meeting"
-        className="text-center "
-      />
-      <MeetingModal
-        isOpen={meetingState == "isScheduleMeeting"}
-        onClose={() => setMeetingState(undefined)}
-        title="Schedule a Meeting for later"
-        buttonText=" Schedule Meeting"
-        className="text-center "
+        className="text-center"
       />
     </>
   );
