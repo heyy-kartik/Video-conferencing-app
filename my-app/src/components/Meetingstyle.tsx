@@ -139,7 +139,7 @@ const Meetingstyle = () => {
               Add a description
             </label>
             <Textarea
-              className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="border-none bg-(--dark-3) focus-visible:ring-0 focus-visible:ring-offset-0"
               onChange={(e) =>
                 setvalues({ ...values, description: e.target.value })
               }
@@ -190,7 +190,7 @@ const Meetingstyle = () => {
             placeholder="https://zoom-clone.com/meeting/..."
             value={meetingLink}
             onChange={(e) => setMeetingLink(e.target.value)}
-            className="border-none bg-dark-3 rounded-md p-3 text-black   font-sans focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="border-none bg-(--dark-3) rounded-md p-3 text-black   font-sans focus-visible:ring-0 focus-visible:ring-offset-0"
           />
         </div>
       </MeetingModal>
