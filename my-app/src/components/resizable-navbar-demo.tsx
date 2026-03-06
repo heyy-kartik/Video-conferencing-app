@@ -12,20 +12,25 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
 import { ModeToggle } from "./dark-toogle";
-
+import { useUser } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 export default function NavbarDemo() {
+  const { user, isLoaded } = useUser();
   const navItems = [
     {
       name: "Features",
       link: "#features",
     },
+
     {
-      name: "Pricing",
-      link: "#pricing",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
+      name: "Stream SDK",
+      link: "https://getstream.io/video/docs/api/streaming/overview/",
     },
   ];
 
@@ -40,8 +45,8 @@ export default function NavbarDemo() {
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
             <NavbarButton variant="secondary">{<ModeToggle />}</NavbarButton>
-            <NavbarButton href="/sign-in" variant="primary">
-              Login
+            <NavbarButton href="/sign-in" variant="secondary">
+              {<UserButton />}
             </NavbarButton>
           </div>
         </NavBody>
@@ -73,10 +78,10 @@ export default function NavbarDemo() {
             <div className="flex w-full flex-col gap-4">
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
+                variant="secondary"
                 className="w-full"
               >
-                Login
+                {<UserButton />}
               </NavbarButton>
             </div>
           </MobileNavMenu>
