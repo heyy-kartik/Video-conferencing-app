@@ -107,7 +107,7 @@ export function HeroSection({
             </MockupFrame>
             <Glow
               variant="top"
-              className="animate-appear-zoom opacity-0 delay-1000"
+              className="animate-appear-zoom opacity-0 delay-500 z-[8s]"
             />
           </div>
         </div>

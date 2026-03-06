@@ -235,9 +235,9 @@ export const NavbarLogo = () => {
   return (
     <a
       href="/"
-      className="relative z-20 flex items-center text-sm font-normal text-black"
+      className="relative z-20  mr-4 space-x-2 flex items-center text-sm font-normal text-black"
     >
-      <img src="/icons/yoom-logo.svg" alt="logo" width={100} height={60} />
+      <img src="/icons/logo.svg" alt="logo" width={30} height={30} />
       <span className="font-semibold text-lg text-black dark:text-white">
         Zoom
       </span>
