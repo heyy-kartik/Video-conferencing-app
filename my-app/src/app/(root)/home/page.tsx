@@ -1,6 +1,6 @@
 import React from "react";
 import Meetingstyle from "@/components/Meetingstyle";
-const page = () => {
+const Hero = () => {
   const now = new Date();
   const time = now.toLocaleTimeString("en-US", {
     hour: "2-digit",
@@ -33,4 +33,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Hero;
