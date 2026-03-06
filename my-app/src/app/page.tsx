@@ -12,14 +12,16 @@ export default function HeroSectionDemo() {
       <NavbarDemo />
       <HeroSection
         badge={{
-          text: "Introducing our new components",
+          text: " 🎉 Introducing New Features  ",
           action: {
             text: "Learn more",
-            href: "/docs",
+            href: "/features",
           },
         }}
-        title="Build faster with beautiful components"
-        description="Premium UI components built with React and Tailwind CSS. Save time and ship your next project faster with our ready-to-use components."
+        title="Video conference,
+     
+        reimagined"
+        description="Secure, real-time video calls with screen sharing, meeting scheduling, personal rooms, and recordings — all in one place."
         actions={[
           {
             text: "Get Started",
