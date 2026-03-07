@@ -1,6 +1,6 @@
 import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk';
 import { useUser } from '@clerk/nextjs';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 const useGetCalls = () => {
   const [calls, setCalls] = useState<Call[]>([]);
@@ -18,10 +18,11 @@ const useGetCalls = () => {
           filter_conditions: {
             starts_at: { $exists: true },
             $or: [
-              { created_by_id: user.id },
+              { created_by_user_id: user.id },
               { members: { $in: [user.id] } },
             ],
           },
+          watch: true,
         });
         setCalls(calls);
       } catch (error) {
@@ -33,7 +34,7 @@ const useGetCalls = () => {
     loadCalls();
   }, [client, user?.id]);
 
-  const now = new Date();
+  const now = useMemo(() => new Date(), [calls]);
 
   const endedCalls = calls?.filter(({ state: { startsAt, endedAt } }: Call) => {
     return (startsAt && new Date(startsAt) < now) || !!endedAt;
