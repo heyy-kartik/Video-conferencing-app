@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zoom",
+  title: "EZMeet",
   description: "Video Conferencing Application Using WebRTC & Next.js",
 };
 
