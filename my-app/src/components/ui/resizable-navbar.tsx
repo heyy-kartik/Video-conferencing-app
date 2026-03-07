@@ -239,7 +239,7 @@ export const NavbarLogo = () => {
     >
       <img src="/icons/logo.svg" alt="logo" width={30} height={30} />
       <span className="font-semibold text-lg text-black dark:text-white">
-        Zoom
+        EZMeet
       </span>
     </a>
   );
