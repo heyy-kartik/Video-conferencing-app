@@ -7,22 +7,22 @@ export const sidebarlinks = [
      {
     label : "Upcoming Meetings",
     imgurl : "/icons/upcoming.svg", 
-    route : "/upcoming" , 
+    route : "/home/upcoming" , 
     },
      {
     label : "Previous",
     imgurl : "/icons/previous.svg", 
-    route : "/previous" , 
+    route : "/home/previous" , 
     },
      {
     label : "Recordings",
     imgurl : "/icons/recordings.svg", 
-    route : "/recordings" , 
+    route : "/home/recordings" , 
     },
      {
     label : "Personal Room",
     imgurl : "/icons/add-personal.svg", 
-    route : "/personal-room" , 
+    route : "/home/personal-room" , 
     }
 ] 
 export const avatarImages = [
