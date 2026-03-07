@@ -187,7 +187,7 @@ const Meetingstyle = () => {
           </label>
           <Input
             type="text"
-            placeholder="https://zoom-clone.com/meeting/..."
+            placeholder="https://ezmeet.com/meeting/..."
             value={meetingLink}
             onChange={(e) => setMeetingLink(e.target.value)}
             className="border-none bg-dark-3 rounded-md p-3 text-black   font-sans focus-visible:ring-0 focus-visible:ring-offset-0"

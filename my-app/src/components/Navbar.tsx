@@ -9,7 +9,7 @@ const Navbar = () => {
       <Link href="/" className="flex items-center gap-1">
         <Image src="/icons/logo.svg" alt="hamburger" width={32} height={32} />
         <p className="text-[26px] font-extrabold text-white max-sm:hidden">
-          Zoom
+          EZMeet
         </p>
       </Link>
 

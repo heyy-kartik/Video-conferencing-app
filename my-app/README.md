@@ -1,4 +1,4 @@
-# Zoom Clone
+# EZMeet
 
 A modern video conferencing application built with Next.js, featuring real-time video calls, screen sharing, meeting scheduling, and more.
 
@@ -67,8 +67,8 @@ A modern video conferencing application built with Next.js, featuring real-time 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/zoom-clone.git
-   cd zoom-clone/my-app
+   git clone https://github.com/yourusername/ezmeet.git
+   cd ezmeet/my-app
    ```
 
 2. Install dependencies:
