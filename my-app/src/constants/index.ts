@@ -1,8 +1,8 @@
 export const sidebarlinks = [
   {
     label : "Home",
-    imgurl : "/icons/home.svg", 
-    route : "/" , 
+    imgurl : "/icons/Home.svg", 
+    route : "/home" , 
     },
      {
     label : "Upcoming Meetings",

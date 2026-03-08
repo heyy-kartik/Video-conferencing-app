@@ -72,7 +72,7 @@ const PersonalRoom = () => {
           Start Meeting
         </Button>
         <Button
-          className="bg-(--dark-3)"
+          className="bg-(--dark-3) text-white hover:bg-black"
           onClick={() => {
             navigator.clipboard.writeText(meetingLink);
             toast("Link Copied");
