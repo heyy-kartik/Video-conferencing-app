@@ -35,6 +35,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         <ClerkProvider
+          afterSignInUrl="/home"
+          afterSignUpUrl="/home"
           appearance={{
             layout: {
               socialButtonsVariant: "iconButton",
