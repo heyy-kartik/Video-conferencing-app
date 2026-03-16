@@ -118,7 +118,7 @@ my-app/
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) to learn how to find beginner-friendly issues, run the project locally, follow the code style, and open your first pull request.
 
 ## License
 
