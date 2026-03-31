@@ -23,6 +23,11 @@ export const sidebarlinks = [
     label : "Personal Room",
     imgurl : "/icons/add-personal.svg", 
     route : "/home/personal-room" , 
+    },
+     {
+    label : "Keyboard Echo",
+    imgurl : "/icons/recordings.svg", 
+    route : "/home/keyboard" , 
     }
 ] 
 export const avatarImages = [

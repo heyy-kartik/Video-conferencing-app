@@ -11,6 +11,7 @@ A modern video conferencing application built with Next.js, featuring real-time 
 - 📹 Meeting recordings
 - 📱 Responsive design for all devices
 - 🎨 Modern UI with shadcn/ui components
+- ⌨️ **Keyboard Echo** — renders every keystroke on-screen with a typewriter effect
 
 ## Tech Stack
 
@@ -115,6 +116,27 @@ my-app/
 ├── providers/               # Context providers
 └── public/                  # Static assets
 ```
+
+## Keyboard Echo
+
+Navigate to **Keyboard Echo** in the sidebar (or visit `/home/keyboard`) to open the feature.
+
+- Click **"Start Capture"** to enable keystroke recording.
+- Type anywhere on the page — characters appear in the panel with a typewriter effect.
+- Special keys behave as follows:
+
+| Key | Behaviour |
+|-----|-----------|
+| `Backspace` | Deletes the last character |
+| `Enter` | Inserts a new line |
+| `Tab` | Inserts a tab stop (no focus switch) |
+| `Escape` | Clears the entire panel |
+| `Space` | Renders as a space |
+| Other non-printable keys | Rendered as `[KeyName]` tokens |
+
+- Click **"Clear"** to empty the panel at any time.
+- Typing inside form inputs / textareas is **never** captured — the listener is scoped to elements outside normal input fields.
+- The typewriter animation queues characters internally so no keystroke is missed at fast typing speeds.
 
 ## Contributing
 
